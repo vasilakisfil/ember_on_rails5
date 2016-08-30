@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-on-rails5',
+    podModulePrefix: 'ember-on-rails5/pods',
     environment: environment,
     rootURL: '/',
     locationType: 'auto',

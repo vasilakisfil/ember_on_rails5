@@ -1,0 +1,50 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    {{#link-to 'index' id='logo'}}sample app{{/link-to}}
+    <nav>
+      <ul class="nav navbar-nav pull-right">
+        <li>{{link-to 'Home' 'application'}}</li>
+        <li>{{link-to 'Help' 'help'}}</li>
+        {{#if session.isAuthenticated}}
+          <li>{{link-to 'Users' 'users.index'}}</li>
+          {{#bs-dropdown tagName="li"}}
+            {{#bs-dropdown-toggle}}
+              Account <b class="caret"></b>
+            {{/bs-dropdown-toggle}}
+            {{#bs-dropdown-menu}}
+              <li>{{link-to 'Profile' 'user.index' session.data.authenticated.id}}</li>
+              <li>{{link-to 'Settings' 'user.edit' session.data.authenticated.id}}</li>
+              <li class="divider"></li>
+              <li>
+                <a {{!action (route-action 'destroySession')}} href="#">Log out</a>
+              </li>
+            {{/bs-dropdown-menu}}
+          {{/bs-dropdown}}
+        {{else}}
+          <li>{{link-to 'Log in' 'sessions.new'}}</li>
+        {{/if}}
+      </ul>
+    </nav>
+  </div>
+</header>
+<div class="container">
+  {{ember-notify closeAfter=4000 messageStyle='bootstrap'}}
+
+  {{outlet}}
+
+  <footer class="footer">
+    <small>
+      The <a href="http://www.railstutorial.org/">Ember on Rails</a>
+      by <a href="http://www.michaelhartl.com/">Michael Hartl</a>
+      and <a href="http://fil.vasilak.is/">Filippos Vasilakis</a>
+    </small>
+    <nav>
+      <ul>
+        <li>{{link-to 'About' 'about'}}</li>
+        <li>{{link-to 'Contact' 'contact'}}</li>
+        <li><a href="http://news.railstutorial.org/">News</a></li>
+      </ul>
+    </nav>
+  </footer>
+</div>
+
