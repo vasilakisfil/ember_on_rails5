@@ -8,6 +8,6 @@ export default Model.extend({
 
   admin: attr('boolean'),
 
-  created_at: attr('moment'),
-  updated_at: attr('moment'),
+  //created_at: attr('moment'),
+  //updated_at: attr('moment'),
 });

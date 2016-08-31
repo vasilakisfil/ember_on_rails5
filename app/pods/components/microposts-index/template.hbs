@@ -1,0 +1,32 @@
+{{#if model.length}}
+  {{#if title}}
+    <h3>{{title}}</h3>
+  {{else}}
+    <h3>Microposts ({{totalMicroposts}}) </h3>
+  {{/if}}
+  <ol class="microposts">
+    {{#each model as |micropost|}}
+      <li class={{micropost.id}}>
+        {{gravatar-image email=micropost.user.email alt=micropost.user.name size=50 class='gravatar'}}
+
+        <span class="user">{{link-to micropost.user.name 'user.index' micropost.user.id}}</span>
+        <span class="content">
+          {{! here .content delegates to the proxy object content/model}}
+          {{micropost.content}}
+          {{#if micropost.picture}}
+            <img src={{micropost.pictureUrl}}>
+          {{/if}}
+        </span>
+        <span class="timestamp">
+          Posted about {{moment-from-now micropost.createdAt interval=10000}}.
+          {{#if micropost.isAuthor}}
+          <a href="#" {{action 'deleteMicropost'}}>delete</a>
+          {{/if}}
+        </span>
+      </li>
+
+    {{/each}}
+  </ol>
+
+  {{!page-numbers content=model numPagesToShow=4}}
+{{/if}}

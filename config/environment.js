@@ -17,7 +17,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    'ember-devtools': {
+      global: true,
+      enabled: environment === 'development'
+    },
+    'ember-simple-auth': {
+      authenticationRoute: 'sessions.new',
+      routeAfterAuthentication: 'index',
+      routeIfAlreadyAuthenticated: 'index'
+    },
   };
 
   if (environment === 'development') {
