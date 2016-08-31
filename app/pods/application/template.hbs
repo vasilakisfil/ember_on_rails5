@@ -16,7 +16,7 @@
               <li>{{link-to 'Settings' 'user.edit' session.data.authenticated.id}}</li>
               <li class="divider"></li>
               <li>
-                <a {{!action (route-action 'destroySession')}} href="#">Log out</a>
+                <a {{action (route-action 'destroySession')}} href="#">Log out</a>
               </li>
             {{/bs-dropdown-menu}}
           {{/bs-dropdown}}
