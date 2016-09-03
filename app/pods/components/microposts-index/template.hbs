@@ -1,15 +1,17 @@
-{{#if model.length}}
-  {{#if title}}
-    <h3>{{title}}</h3>
-  {{else}}
+{{#if title}}
+  <h3>{{title}}</h3>
+{{else}}
+  {{#if model.length}}
     <h3>Microposts ({{totalMicroposts}}) </h3>
   {{/if}}
+{{/if}}
+{{#if model.length}}
   <ol class="microposts">
     {{#each model as |micropost|}}
       <li class={{micropost.id}}>
         {{gravatar-image email=micropost.user.email alt=micropost.user.name size=50 class='gravatar'}}
 
-        <span class="user">{{link-to micropost.user.name 'user.index' micropost.user.id}}</span>
+        <span class="user">{{!link-to micropost.user.name 'user.index' micropost.user.id}}</span>
         <span class="content">
           {{! here .content delegates to the proxy object content/model}}
           {{micropost.content}}
