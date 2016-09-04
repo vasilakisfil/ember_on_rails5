@@ -3,7 +3,7 @@
   <aside class="col-md-4">
     {{user-profile model=session.currentUser gravatarUsers=gravatarUsers}}
     <section class="micropost_form">
-      <form class="form-basic" role="form" {{!action (route-action 'createMicropost' model.micropost) on='submit'}}>
+      <form class="form-basic" role="form" {{action (route-action 'createMicropost' model.micropost) on='submit'}}>
         <div class="field">
           {{textarea cols="80" value=model.micropost.content rows="4" placeholder="Compose new micropost..."}}
         </div>
@@ -15,7 +15,7 @@
   <div class="col-md-8">
     {{microposts-index
       title="Micropost Feed"
-      model=model.microposts
+      model=model.feed
     }}
   </div>
 </div>

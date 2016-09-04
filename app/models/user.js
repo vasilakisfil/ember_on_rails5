@@ -1,13 +1,13 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
+import DS from 'ember-data';
 
-export default Model.extend({
-  email: attr('string'),
-  name:  attr('string'),
-  password:  attr('string'),
+export default DS.Model.extend({
+  email: DS.attr('string'),
+  name:  DS.attr('string'),
 
-  admin: attr('boolean'),
+  admin: DS.attr('boolean'),
 
-  //created_at: attr('moment'),
-  //updated_at: attr('moment'),
+  created_at: DS.attr('moment'),
+  updated_at: DS.attr('moment'),
+
+  microposts: DS.hasMany('micropost', {async: true})
 });

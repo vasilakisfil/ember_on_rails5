@@ -4,6 +4,21 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend(ApplicationRouteMixin, {
   notify: Ember.inject.service('notify'),
 
+  afterModel() {
+    if(this.get('session.isAuthenticated')) {
+      let userId = this.get('session.data.authenticated.userId');
+
+      if(this.get('store').recordIsLoaded('user', userId)) {
+        this._loadCurrentUser();
+      } else {
+        return this._fetchCurrentUser();
+      }
+    } else {
+      this.set('session.currentUser', null);
+    }
+  },
+
+
   actions: {
     createSession(session) {
       this.get('session').authenticate(
@@ -13,6 +28,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       ).then(
         () => {
           this.get('notify').success('You are in!');
+          this._loadCurrentUser();
           this.controllerFor('sessions.new').set('loginError', null);
         },
         (reason) => this.controllerFor('sessions.new').set('loginError', reason)
@@ -25,17 +41,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
   sessionObserver: Ember.observer('session.isAuthenticated', function() {
     Ember.Logger.debug(this.get('session.isAuthenticated'));
-    if(this.get('session.isAuthenticated')) {
-      let userId = this.get('session.data.authenticated.userId');
-
-      if(this.get('store').recordIsLoaded('user', userId)) {
-        this._loadCurrentUser();
-      } else {
-        this._fetchCurrentUser();
-      }
-    } else {
-      this.set('session.currentUser', null);
-    }
   }),
 
   _loadCurrentUser() {
@@ -51,7 +56,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     var userId = this.get('session.data.authenticated.userId');
     var _this = this;
 
-    this.get('store').findRecord('user', userId).then(function(user) {
+    return this.get('store').findRecord('user', userId).then(function(user) {
       _this.set('session.currentUser', user);
     });
   }
