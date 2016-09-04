@@ -12,8 +12,8 @@
               Account <b class="caret"></b>
             {{/bs-dropdown-toggle}}
             {{#bs-dropdown-menu}}
-              <li>{{link-to 'Profile' 'user.index' session.data.authenticated.id}}</li>
-              <li>{{link-to 'Settings' 'user.edit' session.data.authenticated.id}}</li>
+              <li>{{link-to 'Profile' 'user.index' session.currentUser.id}}</li>
+              <li>{{link-to 'Settings' 'user.edit' session.currentUser.id}}</li>
               <li class="divider"></li>
               <li>
                 <a {{action (route-action 'destroySession')}} href="#">Log out</a>
@@ -47,4 +47,3 @@
     </nav>
   </footer>
 </div>
-

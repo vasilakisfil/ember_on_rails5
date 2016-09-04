@@ -1,0 +1,12 @@
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    {{user-form
+      model=model
+      createOrUpdateUser=(route-action 'updateUser')
+      submitText="Save changes"
+    }}
+  </div>
+</div>
