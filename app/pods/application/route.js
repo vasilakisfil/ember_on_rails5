@@ -18,7 +18,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
 
-
   actions: {
     createSession(session) {
       this.get('session').authenticate(

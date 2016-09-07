@@ -1,7 +1,10 @@
 {{#if session.isAuthenticated}}
 <div class="row">
   <aside class="col-md-4">
-    {{user-profile model=session.currentUser gravatarUsers=gravatarUsers}}
+    <section class="user_info">
+      {{user-profile model=session.currentUser}}
+    </section>
+    {{user-stats model=session.currentUser class="stats" tagName="section"}}
     <section class="micropost_form">
       <form class="form-basic" role="form" {{action (route-action 'createMicropost' model.micropost) on='submit'}}>
         <div class="field">

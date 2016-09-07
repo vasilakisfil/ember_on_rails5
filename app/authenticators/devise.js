@@ -16,6 +16,7 @@ export default Devise.extend({
 
       return this.makeRequest(data).then(
         (response) => {
+          response = this.get('store').serializerFor('application').removeEmptyData(response);
           this.get('store').pushPayload(response); //too bad that pushPayload returns nothing
           var record = this.get('store').peekRecord('session', response.data.id);
           run(null, resolve, record.toJSON());
