@@ -36,6 +36,9 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     destroySession() {
       this.get('session').invalidate();
     },
+    getPage(page) {
+      this.transitionTo({ queryParams: { page }});
+    }
   },
 
   sessionObserver: Ember.observer('session.isAuthenticated', function() {

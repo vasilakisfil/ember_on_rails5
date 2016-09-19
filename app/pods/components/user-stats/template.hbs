@@ -1,11 +1,11 @@
-{{#link-to 'user.following' model}}
+{{#link-to 'user.following' model.id}}
   <strong id="following" class="stat">
     {{model.followingsCount}}
   </strong>
   following
 {{/link-to}}
 
-{{#link-to 'user.followers' model}}
+{{#link-to 'user.followers' model.id}}
   <strong id="followers" class="stat">
     {{model.followersCount}}
   </strong>

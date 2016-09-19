@@ -1,30 +1,18 @@
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        {{gravatar-image email=model.user.email alt=model.name size=80 class='gravatar'}}
-        {{model.user.name}}
-      </h1>
-    </section>
-    <section class="stats">
-      {{user-stats model=model.user class="stats"}}
-    </section>
-  </aside>
+  {{user-aside
+    model=model.user
+    tagName="aside"
+    class="col-md-4"
+    profileRoute=true
+  }}
   <div class="col-md-8">
     {{#if (not-eq session.currentUser.id model.user.id)}}
-      <div id="follow_form">
-        <form>
-          {{#if isFollower}}
-            <input type="submit" name="commit" value="Unfollow" class="btn" {{action 'unfollowUser'}} />
-          {{else}}
-            <input type="submit" name="commit" value="Follow" class="btn btn-primary" {{action 'followUser'}} />
-          {{/if}}
-        </form>
-      </div>
+      {{follow-form model=model.user}}
     {{/if}}
     {{microposts-index
       model=model.microposts
       micropostsCount=model.user.micropostsCount
+      meta=model.microposts.meta
     }}
   </div>
 </div>

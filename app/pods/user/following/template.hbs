@@ -1,0 +1,11 @@
+<div class="row">
+  {{user-aside
+    model=model.user
+    currentUserId=session.currentUser.id
+    tagName="aside"
+    class="col-md-4"
+  }}
+  <div class="col-md-8">
+    {{users-list model=model.followings}}
+  </div>
+</div>

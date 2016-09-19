@@ -1,0 +1,17 @@
+<section class="user_info">
+  {{#link-to 'user.index' model}}
+    {{gravatar-image email=model.email alt=model.name size=80 class='gravatar'}}
+  {{/link-to}}
+  <h1>{{model.name}}</h1>
+  {{#unless profileRoute}}
+    {{#if (eq model.id currentUserId)}}
+      <span> {{link-to "View my profile" 'user.index' model}} </span>
+    {{else}}
+      <span> {{link-to "View profile" 'user.index' model}} </span>
+    {{/if}}
+  {{/unless}}
+  <span>{{model.micropostsCount}} {{pluralize "micropost" model.micropostsCount}}</span>
+</section>
+<section class="stats">
+  {{user-stats model=model class="stats"}}
+</section>
