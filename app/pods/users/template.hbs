@@ -3,18 +3,6 @@
 <br>
 {{!page-numbers content=model numPagesToShow=4}}
 <br>
-<ul class="users">
-  {{#each model as |user|}}
-    <li>
-      {{#link-to 'user.index' user.id}}{{gravatar-image email=user.email alt=user.name size=50 imgClass='gravatar'}}{{/link-to}}
-      {{#link-to 'user.index' user.id}}{{user.name}}{{/link-to}}
-
-      {{#if session.currentUser.admin}}
-        | <a href="#" {{action 'deleteUser' user}}>delete</a>
-      {{/if}}
-    </li>
-  {{/each}}
-</ul>
-
+{{users-list model=model}}
 <br>
 {{!page-numbers content=content numPagesToShow=4}}

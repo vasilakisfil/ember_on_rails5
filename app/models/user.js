@@ -1,21 +1,8 @@
 import DS from 'ember-data';
+import Person from './person';
 
-export default DS.Model.extend({
-  email: DS.attr('string'),
-  name:  DS.attr('string'),
-
-  admin: DS.attr('boolean'),
-
+export default Person.extend({
   password: DS.attr('string'),
-
-  micropostsCount: DS.attr('number'),
-  followersCount: DS.attr('number'),
-  followingsCount: DS.attr('number'),
-
-  created_at: DS.attr('moment'),
-  updated_at: DS.attr('moment'),
-
-  microposts: DS.hasMany('micropost', {async: true}),
 
   valid() {
     if (!this.get('password')) { return true; }
