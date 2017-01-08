@@ -8,7 +8,8 @@ module.exports = function(defaults) {
       'js': false
     },
     'ember-bootstrap': {
-      importBootstrapCSS: false
+      importBootstrapCSS: false,
+      importBootstrapFont: false
     }
   });
 

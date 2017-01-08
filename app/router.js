@@ -13,6 +13,7 @@ Router.map(function() {
 
   this.route('sessions.new', {path: '/login'});
   this.route('users.new', {path: '/signup'});
+  this.route('users.activation', {path: '/users/activation'});
 
   this.route('users', function() {});
   this.route('user', {path: '/users/:user_id'}, function() {
