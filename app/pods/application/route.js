@@ -8,7 +8,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     if(this.get('session.isAuthenticated')) {
       let userId = this.get('session.data.authenticated.userId');
 
-      if(this.get('store').recordIsLoaded('user', userId)) {
+      if(this.get('store').hasRecordForId('user', userId)) {
         this._loadCurrentUser();
       } else {
         return this._fetchCurrentUser();
@@ -41,10 +41,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
 
-  sessionObserver: Ember.observer('session.isAuthenticated', function() {
-    Ember.Logger.debug(this.get('session.isAuthenticated'));
-  }),
-
   _loadCurrentUser() {
     this.set(
       'session.currentUser',
@@ -61,5 +57,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     return this.get('store').findRecord('user', userId).then(function(user) {
       _this.set('session.currentUser', user);
     });
-  }
+  },
+
 });

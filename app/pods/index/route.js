@@ -40,13 +40,6 @@ export default Ember.Route.extend(ResetScroll, {
   },
 
   _fetchFeed(page = 1) {
-    return this.get('store').query('micropost', {
-      user_id: this.get('session.currentUser.id'), page
-    }).then(microposts => {
-      return {
-        microposts: microposts.filterBy('isNew', false),
-        meta: microposts.get('meta')
-      };
-    });
+    return this.get('session.currentUser').query('feed', {page: page});
   }
 });

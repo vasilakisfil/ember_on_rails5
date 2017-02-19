@@ -8,7 +8,13 @@
       <section class="micropost_form">
         <form class="form-basic" role="form" {{action (route-action 'createMicropost' model.micropost) on='submit'}}>
           <div class="field">
-            {{textarea cols="80" value=model.micropost.content rows="4" placeholder="Compose new micropost..."}}
+            {{textarea
+              cols="80"
+              value=model.micropost.content
+              rows="4"
+              placeholder="Compose new micropost..."
+              insert-newline=(route-action 'createMicropost' model.micropost)
+            }}
           </div>
 
           <input type="submit" class="btn btn-primary">
@@ -18,7 +24,7 @@
     <div class="col-md-8">
       {{microposts-index
         title="Micropost Feed"
-        model=model.feed.microposts
+        model=model.feed
         meta=model.feed.meta
       }}
     </div>
