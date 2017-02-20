@@ -18,10 +18,11 @@ export default DS.Model.extend({
   updatedAt: DS.attr('moment'),
 
   microposts: DS.hasMany('micropost', {async: true}),
+  feed: DS.hasMany('micropost', {async: true}),
   followers: DS.hasMany('person'),
   followings: DS.hasMany('person'),
 
   isFollower: Ember.computed.oneWay('followerState'),
-  isFollowed: Ember.computed.oneWay('followingState')
+  isFollowed: Ember.computed.oneWay('followingState'),
 });
 

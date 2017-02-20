@@ -1,7 +1,8 @@
 import DS from 'ember-data';
+import HasManyQuery from 'ember-data-has-many-query';
 import Person from './person';
 
-export default Person.extend({
+export default Person.extend(HasManyQuery.ModelMixin, {
   password: DS.attr('string'),
 
   valid() {

@@ -8,7 +8,7 @@ export default DS.Model.extend({
   createdAt: DS.attr('moment'),
   updatedAt: DS.attr('moment'),
 
-  user: DS.belongsTo('user', {async: true}),
+  user: DS.belongsTo('user', {async: true, inverse: 'microposts'}),
 
   pictureUrl: function() {
     return 'http://localhost:3000/' + this.get('picture');
