@@ -1,7 +1,6 @@
 # Ember-on-rails5
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Michael Hart's Rails tutorial.. on Ember! Check the rails 5 [backend API](https://github.com/vasilakisfil/rails5_api_tutorial).
 
 ## Prerequisites
 
