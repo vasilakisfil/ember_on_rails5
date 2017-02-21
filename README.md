@@ -1,6 +1,6 @@
 # Ember-on-rails5
 
-Michael Hart's Rails tutorial.. on Ember! Check the rails 5 [backend API](https://github.com/vasilakisfil/rails5_api_tutorial). The tutoral is on its way...
+Michael Hart's Rails tutorial.. on Ember! Check the rails 5 [backend API](https://github.com/vasilakisfil/rails5_api_tutorial). Deployed [here](https://ember-on-rails5.herokuapp.com) The tutoral is on its way...
 
 ## Prerequisites
 
