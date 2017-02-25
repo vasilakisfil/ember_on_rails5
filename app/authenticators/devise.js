@@ -7,7 +7,6 @@ export default Devise.extend({
   tokenAttributeName: 'token',
   identificationAttributeName: 'email',
 
-  //check how Samuel's solution on Valu8
   authenticate(identification, password) {
     return new Promise((resolve, reject) => {
       var data = {

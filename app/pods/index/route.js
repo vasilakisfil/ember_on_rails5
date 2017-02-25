@@ -19,7 +19,6 @@ export default Ember.Route.extend(ResetScroll, {
 
   afterModel() {
     //transitionTo to the same route does not fire didTransition
-    this._scrollUp();
   },
 
   actions: {

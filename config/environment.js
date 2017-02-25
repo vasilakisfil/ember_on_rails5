@@ -27,6 +27,9 @@ module.exports = function(environment) {
       routeAfterAuthentication: 'index',
       routeIfAlreadyAuthenticated: 'index'
     },
+    fastboot: {
+      hostWhitelist: [/^localhost:\d+$/]
+    }
   };
 
   if (environment === 'development') {
